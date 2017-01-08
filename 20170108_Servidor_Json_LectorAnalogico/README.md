@@ -8,14 +8,6 @@ En el siguiente proyecto se crea un servidor en nodemcu v1.0 programado como ard
  * Cliente Sencillo: Simple script en python para probar el servidor
  * Cliente en Flask: Siguiente paso para hacerlo amigable en web
  
-La presentacion consta de 3 partes fundamentales:
-
- * Lo primero, quitarnos la verguenza. Nada mejor que con el clasico HolaMundo
- * Nos metemos de lleno en la extension de funciones, con un ejemplo de mas a menos.
- * Por ultimo, la envoltura  de una clase externa
-
-** NOTA: La presentacion se ha desarrollado bajo Fedora 22/23 y utilizando Python3.4. **
-
 ## Instalacion para sistemas LINUX (FEDORA)
 
 Se va a utilizar los siguientes programas:
