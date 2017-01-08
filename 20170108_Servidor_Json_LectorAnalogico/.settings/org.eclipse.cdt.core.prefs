@@ -1,0 +1,6 @@
+eclipse.preferences.version=1
+environment/project/0.910961921/PATH/delimiter=\:
+environment/project/0.910961921/PATH/operation=replace
+environment/project/0.910961921/PATH/value=/usr/lib64/qt-3.3/bin\:/usr/local/bin\:/usr/local/sbin\:/usr/bin\:/usr/sbin\:/home/pedro/.local/bin\:/home/pedro/bin
+environment/project/0.910961921/append=true
+environment/project/0.910961921/appendContributed=true
