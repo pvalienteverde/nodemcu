@@ -2,11 +2,10 @@ import requests
 
 def Main():
     while(1): 
-        lr = input("Led Azul: ")
-        lv = input("Led Verde: ")
+        rele = input("Rele on/off: ")
         
-        parametros = {'led_rojo': lr,'led_verde': lv,'ldr':'estado'}
-        respuesta = requests.get('http://192.168.1.150/request?', params=parametros)
+        parametros = {'rele': rele,'ldr':'estado'}
+        respuesta = requests.get('http://192.168.0.150/request?', params=parametros)
         print(respuesta.text)
 
      

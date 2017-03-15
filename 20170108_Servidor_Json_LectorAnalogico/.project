@@ -30,4 +30,16 @@
 		<nature>org.eclipse.cdt.managedbuilder.core.ScannerConfigNature</nature>
 		<nature>org.python.pydev.pythonNature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>lib/AccesoWifi</name>
+			<type>2</type>
+			<location>/home/pedro/LibreriasArduinoExternas/AccesoWifi</location>
+		</link>
+		<link>
+			<name>lib/ArduinoJson</name>
+			<type>2</type>
+			<location>/home/pedro/LibreriasArduinoExternas/ArduinoJson</location>
+		</link>
+	</linkedResources>
 </projectDescription>

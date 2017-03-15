@@ -7,9 +7,7 @@
 
 ESP8266WebServer server(80);
 
-auto pin_azul = Pins_Arduino_h::D1;
-auto pin_verde = Pins_Arduino_h::D2;
-
+auto rele = Pins_Arduino_h::D1;
 /**
  * Funcion que pasea los argumentos http://ip?argumento1=valor1&argumento2=valor2...
  */
@@ -20,22 +18,19 @@ void ArgumentosGenericos();
  * @param valor    String del arguemnto accion
  * @return
  */
-String LedRojo(ESP8266WebServer &servidor, const String &valor);
-String LedVerde(ESP8266WebServer &servidor, const String &valor);
+String Rele(ESP8266WebServer &servidor, const String &valor);
 String LDR(ESP8266WebServer &servidor, const String &valor);
 /**
  * Se realiza la configuracion del dispositivo
  */
 void setup(void) {
 	// Pin de entrada a 0
-	pinMode(pin_azul, OUTPUT);
-	digitalWrite(pin_azul, LOW);
-	pinMode(pin_verde, OUTPUT);
-	digitalWrite(pin_verde, LOW);
+	pinMode(rele, OUTPUT);
+	digitalWrite(rele, HIGH);
 
 	// Configuracion a wifi a una ip fija para poder conectar
 	// mas dispositivos similares
-	IPAddress ip(192, 168, 1, 150);
+	IPAddress ip(192, 168, 0, 150);
 	IPAddress gateway(192, 168, 1, 1);
 	IPAddress subnet(255, 255, 255, 0);
 	WiFi.config(ip, gateway, subnet);
@@ -65,10 +60,8 @@ void ArgumentosGenericos() { //Handler
 	for (int i = 0; i < server.args(); i++) {
 		auto parametro = server.argName(i);
 		auto valor = server.arg(i);
-		if (parametro == "led_rojo") {
-			json[parametro] = LedRojo(server, valor);
-		} else if (parametro == "led_verde") {
-			json[parametro] = LedVerde(server, valor);
+		if (parametro == "rele") {
+			json[parametro] = Rele(server, valor);
 		}
 	}
 
@@ -84,29 +77,14 @@ void ArgumentosGenericos() { //Handler
 
 }
 
-String LedRojo(ESP8266WebServer &servidor, const String &valor) {
+String Rele(ESP8266WebServer &servidor, const String &valor) {
 	String mensaje("");
-	if (valor == "0") {
-		digitalWrite(pin_azul, LOW);
-		mensaje += "0";
-	} else if (valor == "1") {
-		digitalWrite(pin_azul, HIGH);
-		mensaje += "1";
-	} else {
-		mensaje += "NaN";
-
-	}
-	return mensaje.c_str();
-}
-
-String LedVerde(ESP8266WebServer &servidor, const String &valor) {
-	String mensaje("");
-	if (valor == "0") {
-		digitalWrite(pin_verde, LOW);
-		mensaje += "0";
-	} else if (valor == "1") {
-		digitalWrite(pin_verde, HIGH);
-		mensaje += "1";
+	if (valor == "on") {
+		digitalWrite(rele, LOW);
+		mensaje += "ON";
+	} else if (valor == "off") {
+		digitalWrite(rele, HIGH);
+		mensaje += "OFF";
 	} else {
 		mensaje += "NaN";
 

@@ -1,0 +1,43 @@
+{% extends "layout.html" %}
+{% block body %}
+
+<script type="text/javascript">
+  $(function() {
+    var submit_form = function(e) {
+      $.getJSON($SCRIPT_ROOT + '/_refrescar', {
+        rele: $('input[name="rele"]').val()
+      }, function(data) {
+        $('#ldr').text(data.ldr);
+        $('input[name=rele]').focus().select();
+      });
+      return false;
+    };
+    
+    var orden_refrescar = function(e) {
+      $.getJSON($SCRIPT_ROOT + '/_orden_refrescar', {
+        rele: $('input[name="rele"]').val()
+      }, function(data) {
+        $('#ldr').text(data.ldr);
+        $('input[name=rele]').focus().select();
+      });
+      return false;
+    };
+        
+    $('a#refrecar').bind('click', submit_form); 
+    $('a#orden').bind('click', orden_refrescar);
+    $('input[type=text]').bind('keydown', function(e) {
+      if (e.keyCode == 13) {
+        orden_refrescar(e);
+      }
+    });     
+    $('input[name=a]').focus();
+  });
+</script>
+
+
+<h1>IoC</h1>
+<p>
+  Rele on/off: <input type="text" size="5" name="rele">
+<p>LDR: <span id="ldr">?</span>
+<p><a href=# id="refrecar">Refrescar</a> <a href=# id="orden">Orden</a>
+{% endblock %}
